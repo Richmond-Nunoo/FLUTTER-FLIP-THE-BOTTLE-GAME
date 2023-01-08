@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'dart:math';
+import 'package:flip_the_bottle_game/views/bottle.dart';
+import 'package:flip_the_bottle_game/views/circle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
@@ -87,27 +90,42 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
- 
+    var random = Random();
+    var result = random.nextBool() ? 'top' : 'bottom';
     return Scaffold(
-      body: Column(
-
-      ),
-      bottomSheet: SizedBox(
-        height: 100.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Flip to top'),
+            const Circle(color: Colors.blue, width: 200, height: 200),
+            const SizedBox(
+              height: 20,
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Flip to bottom'),
+            const Bottle(width: 50, height: 20),
+            const SizedBox(
+              height: 20,
             ),
+            Text(result)
           ],
         ),
       ),
+      // bottomSheet: SizedBox(
+      //   height: 100.0,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       ElevatedButton(
+      //         onPressed: () {},
+      //         child: const Text('Flip to top'),
+      //       ),
+      //       ElevatedButton(
+      //         onPressed: () {},
+      //         child: const Text('Flip to bottom'),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }
