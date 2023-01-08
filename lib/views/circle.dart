@@ -1,21 +1,34 @@
 import 'dart:math';
+import 'package:flip_the_bottle_game/views/bottle.dart';
 import 'package:flutter/material.dart';
 
-
 class Circle extends StatelessWidget {
-  final Color color;
-  final double width;
-  final double height;
-
-  const Circle({super.key, required this.color, required this.width, required this.height});
+  const Circle({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: CustomPaint(
-        painter: _CirclePainter(color: color),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text("Flip the Bottle"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              width: 200,
+              height: 200,
+              child: CustomPaint(
+                painter: _CirclePainter(color: Colors.blue),
+              ),
+            ),
+            const Bottle(width: 180, height: 180)
+          ],
+        ),
       ),
     );
   }
@@ -41,13 +54,16 @@ class _CirclePainter extends CustomPainter {
     paint.strokeWidth = 2;
     paint.style = PaintingStyle.stroke;
 
-    var start = Offset(size.width / 2, 0);
-    var end = Offset(size.width / 2, size.height);
+    var start = Offset(
+      0,
+      size.width / 2,
+    );
+    var end = Offset(size.width, size.height / 2);
     canvas.drawLine(start, end, paint);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
+    return true;
   }
 }

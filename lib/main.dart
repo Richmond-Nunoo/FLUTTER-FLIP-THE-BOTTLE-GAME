@@ -1,4 +1,4 @@
-import 'package:flip_the_bottle_game/views/home_screen.dart';
+import 'package:flip_the_bottle_game/views/circle.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flip The Bottle',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const Circle(),
     );
   }
 }
