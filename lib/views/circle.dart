@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'package:flip_the_bottle_game/views/bottle.dart';
 import 'package:flutter/material.dart';
 
@@ -19,13 +19,10 @@ class Circle extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SizedBox(
-              width: 250,
-              height: 250,
-              child: CustomPaint(
-                painter: _CirclePainter(
-                    topColor: Colors.yellow, bottomColor: Colors.green),
-              ),
+            CustomPaint(
+              size: const Size(250, 250),
+              painter: _CirclePainter(
+                  topColor: Colors.yellow, bottomColor: Colors.green),
             ),
             const Bottle(width: 280, height: 280)
           ],
@@ -46,15 +43,23 @@ class _CirclePainter extends CustomPainter {
     var paint = Paint()..style = PaintingStyle.fill;
 
     var center = Offset(size.width / 2, size.height / 2);
-    var radius = min(size.width, size.height) / 2;
+    var radius = math.min(size.width, size.height) / 2;
 
-    //draw top half
-    paint.color = Colors.black;
-    canvas.drawCircle(center, radius, paint);
+    paint.color = Colors.red;
+    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), math.pi,
+        math.pi, true, paint);
 
-    //draw bottom half
-    paint.color = bottomColor;
-    canvas.drawCircle(center, radius, paint);
+    paint.color = Colors.blue;
+
+    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), 0, math.pi,
+        true, paint);
+    // //draw top half
+    // paint.color = Colors.yellow;
+    // canvas.drawCircle(center, radius, paint);
+
+    // //draw bottom half
+    // paint.color = Colors.blue;
+    // canvas.drawCircle(center, radius, paint);
 
     paint.color = Colors.white;
     paint.strokeWidth = 5;
@@ -73,7 +78,7 @@ class _CirclePainter extends CustomPainter {
       text: "TOP",
       style: TextStyle(
         textBaseline: TextBaseline.alphabetic,
-        color: Colors.black,
+        color: Colors.white,
         inherit: false,
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -95,12 +100,11 @@ class _CirclePainter extends CustomPainter {
     );
 
     // Draw bottom text
-    paint.color = Colors.black;
 
     var bottomText = const TextSpan(
       text: "Bottom",
       style: TextStyle(
-        color: Colors.black,
+        color: Colors.white,
         inherit: false,
         fontSize: 16,
         fontWeight: FontWeight.bold,

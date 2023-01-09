@@ -36,14 +36,15 @@ class BottleState extends State<Bottle> with TickerProviderStateMixin {
   void _flip() {
     _controller.reset();
     var random = Random();
-    var end = random.nextDouble() * 5;
+    var end = random.nextDouble() * 2;
     _animation = CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(
-          0,
-          0.9,
-          curve: Curves.linear,
-        ));
+      parent: _controller,
+      curve: const Interval(
+        0,
+        0.9,
+        curve: Curves.linear,
+      ),
+    );
     _animation = Tween<double>(begin: 0, end: end).animate(_controller);
     _animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -66,8 +67,10 @@ class BottleState extends State<Bottle> with TickerProviderStateMixin {
         turns: _animation,
         child: Image.asset(
           "assets/bottle1.png",
-          width: widget.width,
-          height: widget.height,
+          filterQuality: FilterQuality.high,
+          fit: BoxFit.contain,
+          width: 200,
+          height: 90,
         ),
       ),
     );
