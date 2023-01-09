@@ -20,13 +20,14 @@ class Circle extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             SizedBox(
-              width: 200,
-              height: 200,
+              width: 250,
+              height: 250,
               child: CustomPaint(
-                painter: _CirclePainter(color: Colors.blue),
+                painter: _CirclePainter(
+                    topColor: Colors.yellow, bottomColor: Colors.green),
               ),
             ),
-            const Bottle(width: 180, height: 180)
+            const Bottle(width: 280, height: 280)
           ],
         ),
       ),
@@ -35,23 +36,28 @@ class Circle extends StatelessWidget {
 }
 
 class _CirclePainter extends CustomPainter {
-  final Color color;
+  final Color topColor;
+  final Color bottomColor;
 
-  _CirclePainter({required this.color});
+  _CirclePainter({required this.topColor, required this.bottomColor});
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
+    var paint = Paint()..style = PaintingStyle.fill;
 
     var center = Offset(size.width / 2, size.height / 2);
     var radius = min(size.width, size.height) / 2;
 
+    //draw top half
+    paint.color = Colors.black;
+    canvas.drawCircle(center, radius, paint);
+
+    //draw bottom half
+    paint.color = bottomColor;
     canvas.drawCircle(center, radius, paint);
 
     paint.color = Colors.white;
-    paint.strokeWidth = 2;
+    paint.strokeWidth = 5;
     paint.style = PaintingStyle.stroke;
 
     var start = Offset(
@@ -60,6 +66,58 @@ class _CirclePainter extends CustomPainter {
     );
     var end = Offset(size.width, size.height / 2);
     canvas.drawLine(start, end, paint);
+
+    // Draw top text
+
+    var topText = const TextSpan(
+      text: "TOP",
+      style: TextStyle(
+        textBaseline: TextBaseline.alphabetic,
+        color: Colors.black,
+        inherit: false,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+    var topTextPainter = TextPainter(
+      textWidthBasis: TextWidthBasis.longestLine,
+      textAlign: TextAlign.center,
+      text: topText,
+      textDirection: TextDirection.rtl,
+    );
+    topTextPainter.layout(
+      minWidth: 0,
+      maxWidth: size.width,
+    );
+    topTextPainter.paint(
+      canvas,
+      Offset(center.dx - 10, center.dy - 100),
+    );
+
+    // Draw bottom text
+    paint.color = Colors.black;
+
+    var bottomText = const TextSpan(
+      text: "Bottom",
+      style: TextStyle(
+        color: Colors.black,
+        inherit: false,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+    var bottomTextPainter = TextPainter(
+      text: bottomText,
+      textDirection: TextDirection.ltr,
+    );
+    bottomTextPainter.layout(
+      minWidth: 0,
+      maxWidth: size.width,
+    );
+    bottomTextPainter.paint(
+      canvas,
+      Offset(center.dx - 30, center.dy + 80),
+    );
   }
 
   @override

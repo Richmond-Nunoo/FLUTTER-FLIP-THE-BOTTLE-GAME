@@ -20,9 +20,11 @@ class BottleState extends State<Bottle> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
+      animationBehavior: AnimationBehavior.preserve,
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(seconds: 1),
     );
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
   }
 
   @override
@@ -34,13 +36,13 @@ class BottleState extends State<Bottle> with TickerProviderStateMixin {
   void _flip() {
     _controller.reset();
     var random = Random();
-    var end = random.nextDouble() * 2;
+    var end = random.nextDouble() * 5;
     _animation = CurvedAnimation(
         parent: _controller,
         curve: const Interval(
           0,
-          0.5,
-          curve: Curves.easeOut,
+          0.9,
+          curve: Curves.linear,
         ));
     _animation = Tween<double>(begin: 0, end: end).animate(_controller);
     _animation.addStatusListener((status) {
