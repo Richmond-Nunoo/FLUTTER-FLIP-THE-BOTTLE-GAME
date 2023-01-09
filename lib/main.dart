@@ -1,4 +1,4 @@
-import 'package:flip_the_bottle_game/views/circle.dart';
+import 'package:flip_the_bottle_game/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

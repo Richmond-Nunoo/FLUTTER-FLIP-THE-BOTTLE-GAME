@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 40,
+              height: 50,
             ),
             Stack(
               alignment: Alignment.center,
@@ -64,16 +64,8 @@ class _CirclePainter extends CustomPainter {
         math.pi, true, paint);
 
     paint.color = Colors.blue;
-
     canvas.drawArc(Rect.fromCircle(center: center, radius: radius), 0, math.pi,
         true, paint);
-    // //draw top half
-    // paint.color = Colors.yellow;
-    // canvas.drawCircle(center, radius, paint);
-
-    // //draw bottom half
-    // paint.color = Colors.blue;
-    // canvas.drawCircle(center, radius, paint);
 
     paint.color = Colors.white;
     paint.strokeWidth = 5;
@@ -85,8 +77,6 @@ class _CirclePainter extends CustomPainter {
     );
     var end = Offset(size.width, size.height / 2);
     canvas.drawLine(start, end, paint);
-
-    // Draw top text
 
     var topText = const TextSpan(
       text: "TOP",
