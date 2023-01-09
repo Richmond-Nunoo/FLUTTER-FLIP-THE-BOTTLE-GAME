@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                 CustomPaint(
                   size: const Size(250, 250),
                   painter: _CirclePainter(
-                      topColor: Colors.yellow, bottomColor: Colors.green),
+                      topColor: Colors.red, bottomColor: Colors.blue),
                 ),
                 const Bottle(width: 280, height: 280)
               ],
@@ -59,11 +59,11 @@ class _CirclePainter extends CustomPainter {
     var center = Offset(size.width / 2, size.height / 2);
     var radius = math.min(size.width, size.height) / 2;
 
-    paint.color = Colors.red;
+    paint.color = topColor;
     canvas.drawArc(Rect.fromCircle(center: center, radius: radius), math.pi,
         math.pi, true, paint);
 
-    paint.color = Colors.blue;
+    paint.color = bottomColor;
     canvas.drawArc(Rect.fromCircle(center: center, radius: radius), 0, math.pi,
         true, paint);
 
