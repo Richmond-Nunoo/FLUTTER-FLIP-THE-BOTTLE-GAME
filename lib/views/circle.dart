@@ -2,13 +2,14 @@ import 'dart:math' as math;
 import 'package:flip_the_bottle_game/views/bottle.dart';
 import 'package:flutter/material.dart';
 
-class Circle extends StatelessWidget {
-  const Circle({
+class HomePage extends StatelessWidget {
+  const HomePage({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -16,15 +17,28 @@ class Circle extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomPaint(
-              size: const Size(250, 250),
-              painter: _CirclePainter(
-                  topColor: Colors.yellow, bottomColor: Colors.green),
+            Text(
+              "Tap the bottle to flip it !!",
+              style: theme.titleLarge,
+              textAlign: TextAlign.center,
             ),
-            const Bottle(width: 280, height: 280)
+            const SizedBox(
+              height: 40,
+            ),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                CustomPaint(
+                  size: const Size(250, 250),
+                  painter: _CirclePainter(
+                      topColor: Colors.yellow, bottomColor: Colors.green),
+                ),
+                const Bottle(width: 280, height: 280)
+              ],
+            ),
           ],
         ),
       ),
