@@ -1,6 +1,6 @@
 # flip_the_bottle_game
 
-This is a simple flip the bottle game i made with flutter.Wanted to get my hands around customer painter and little animation. The bottle flips and lands any random position.
+This is a simple flip the bottle game i made with flutter.Wanted to get my hands around customer painter and little animation. The bottle flips and lands on any random position.
 
 ## SCREENSHOTS
 <p style="float: center;">
