@@ -1,6 +1,6 @@
 # flip_the_bottle_game
 
-This is a simple flip the bottle game i made with flutter.Wanted to get my hands around customer painter.
+This is a simple flip the bottle game i made with flutter.Wanted to get my hands around customer painter and little animation. The bottle flips and lands any random position.
 
 ## SCREENSHOTS
 <p style="float: center;">
@@ -16,7 +16,11 @@ This is a simple flip the bottle game i made with flutter.Wanted to get my hands
 # Built With ❤️❤️
 * [Android Studio](https://developer.android.com/studio/install ) How to install Android Studio
 * [Flutter](https://flutter.io) Flutter Official website
-
+# Connect
+<p align="left"> <a href="https://twitter.com/kwame_orsam" target="blank"><img src="https://img.shields.io/twitter/follow/kwame_orsam?logo=twitter&style=for-the-badge" alt="kwame_orsam" /> <a href="https://www.github.com/Richmond-Nunoo" target="_blank" rel="noreferrer"><img
+src="https://img.shields.io/github/followers/Richmond-Nunoo?logo=github&style=for-the-badge&color=0891b2&labelColor=1c1917" />
+  </a> </p>
+  
 # How to contribute
 * Fork the repository and clone it locally. Connect your local to the original “upstream” repository by adding it as a remote. Pull in changes from “upstream” often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions here.)
 * Create a branch for your edits.
